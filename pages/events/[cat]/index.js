@@ -1,11 +1,21 @@
-const EventsCatPage = () => {
+import Image from 'next/image'
+import Link from 'next/link'
+
+const EventsCatPage = ({data}) => {
     return (
         <div>
             <h1>Events in London</h1>
-            <a href="/events/london/event1">Event 1</a>
-            <a href="/events/london/event1">Event 2</a>
-            <a href="/events/london/event1">Event 3</a>
-            <a href="/events/london/event1">Event 4</a>
+            <div>
+                {data.map(ev => (
+                    <Link key={ev.id} href={`/events/${ev.city}/${ev.id}`} passHref legacyBehavior>
+                        <a>
+                            <Image src={ev.image} alt={ev.title} width={300} height={300}/>
+                            <h2>{ev.title}</h2>
+                            <p>{ev.description}</p>
+                        </a>
+                    </Link>
+                ))}
+            </div>
         </div>
     )
 }
@@ -29,8 +39,12 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-    console.log(context)
+    const id = context?.params.cat
+    const { allEvents } = await import('/data/data.json')
+
+    const data = allEvents.filter((ev) => ev.city === id)
+    
     return {
-        props: {}
+        props: {data}
     }
 }

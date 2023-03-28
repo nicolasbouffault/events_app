@@ -3,6 +3,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import { HomePage } from '../src/components/home/home-page'
+import { Header } from '../src/components/header/header'
+import { Footer } from '../src/components/footer/footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,30 +18,9 @@ export default function Home({data}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <header>
-        <nav>
-          <Link href="/" passHref legacyBehavior><a>Home</a></Link>
-          <Link href="/events" passHref legacyBehavior><a>Events</a></Link>
-          <Link href="/about-us" passHref legacyBehavior><a>About Us</a></Link>
-        </nav>
-      </header>
-
-      <main className={styles.main}>
-        {data.map((ev) => (
-          <Link key={ev.id} href={`/events/${ev.id}`} passHref legacyBehavior>
-            <a href={`/events/${ev.id}`}>
-              <Image width={300} height={300} alt={ev.title} src={ev.image} /> 
-              <h2>{ev.title}</h2> 
-              <p>{ev.description}</p>
-            </a>
-          </Link>
-        ))}
-      </main>
-
-      <footer className={styles.footer}>
-        <p>2022 Time to code - A project</p>
-      </footer>
+      <Header />
+      <HomePage data={data}/>
+      <Footer />
     </div>
   )
 }

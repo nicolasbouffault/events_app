@@ -1,8 +1,10 @@
 header
     height: 300px
-    padding: 20px 16px
     background: linear-gradient(305deg, #dbfff3, transparent)
     >div
+        padding: 20px 16px
+        max-width: 1250px
+        margin: 0 auto
         display: flex
         flex-direction: column
         justify-content: space-between
@@ -29,9 +31,10 @@ footer
     text-align: center
 main
     width: 100%
+    min-height: 600px
     max-width: 1250px
     margin: 0 auto
-    padding: 100px 16px
+    padding: 80px 16px
 .home__body
     display: flex
     flex-direction: column
@@ -44,6 +47,15 @@ main
         align-items: center
         &:nth-child(even)
             direction: rtl
+        .image
+            @media (max-width: 767px) 
+                img
+                    max-width: 100%
+                    height: auto
         .content
             width: 50%
-    
+
+.about_us_list
+    display: flex
+    flex-direction: column
+    list-style-type: none

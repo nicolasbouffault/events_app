@@ -45,8 +45,13 @@ main
         gap: 30px
         justify-content: center
         align-items: center
+        @media (max-width: 767px) 
+            flex-direction: column
+            gap: 0
         &:nth-child(even)
             direction: rtl
+            @media (max-width: 767px) 
+                direction: ltr
         .image
             @media (max-width: 767px) 
                 img
@@ -54,8 +59,49 @@ main
                     height: auto
         .content
             width: 50%
+            @media (max-width: 767px)
+                width: 100%
 
 .about_us_list
     display: flex
     flex-direction: column
     list-style-type: none
+
+.events_page
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    align-items: center
+    justify-content: space-between
+    gap: 20px
+    @media (max-width: 767px) 
+        flex-direction: column
+    @media (max-width: 1199px)
+        justify-content: center
+    .card
+        position: relative
+        h2
+            position: absolute
+            width: 100%
+            top: 50%
+            transform: translateY(-50%)
+            margin: 0
+            padding: 0 10px
+            text-align: center
+            font-size: 38px
+            color: #fff
+            text-transform: uppercase
+            text-shadow: 1px 1px 20px #000
+.cat_events
+    width: 100%
+    .content
+        display: flex
+        flex-direction: row
+        flex-wrap: wrap
+        gap: 30px
+        width: 100%
+        justify-content: start
+        .card
+            display: flex
+            flex-direction: column
+            flex: 0
